@@ -15,6 +15,7 @@ export default () => (
       div {
         text-align: center;
         color: #7d798c;
+        padding-bottom: 66px;
       }
       a {
         color: #34946e;
