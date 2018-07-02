@@ -5,6 +5,7 @@ import copy from 'copy-to-clipboard';
 import Editor from '../components/editor';
 import Logo from '../components/logo';
 import DropPreview from '../components/drop-preview';
+import Footer from '../components/footer';
 import template from '../utils/template';
 
 class Main extends React.Component {
@@ -47,10 +48,13 @@ class Main extends React.Component {
               <div className="editor-controls">
                 <button onClick={this.doCopy}>Copy to clipboard</button>
               </div>
-              <Editor value={this.state.jsx} />
+              <div className="editor-wrapper">
+                <Editor value={this.state.jsx} />
+              </div>
             </div>
           </div>
         )}
+        <Footer />
         <style jsx>{`
           :global(body) {
             background: #2c2a37;
@@ -81,11 +85,15 @@ class Main extends React.Component {
             position: relative;
           }
           .editor {
-            padding: 22px;
             background: #322931;
             border-radius: 8px;
             box-shadow: rgba(0, 0, 0, 0.5) 0 0 11px;
           }
+
+          .editor-wrapper {
+            padding: 22px;
+          }
+
           .editor :global(.CodeMirror) {
             height: 50%;
             maxi-height: 50vh;
@@ -93,8 +101,10 @@ class Main extends React.Component {
           }
 
           .editor-controls {
-            text-align: right;
-            padding: 11px 0;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom: 1px solid rgba(200, 200, 200, 0.125);
+            padding: 22px;
           }
 
           button {
@@ -105,7 +115,7 @@ class Main extends React.Component {
             padding: 11px 22px;
             font-size: 18px;
             text-shadow: #34946e 0 1px 2px;
-            box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 0;
+            box-shadow: rgba(0, 0, 0, 0.2) 0 4px 6px;
             display: inline-block;
           }
 

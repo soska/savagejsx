@@ -10,7 +10,7 @@ const BlankState = ({ hover }) => (
     <style jsx>{`
       .hover {
         text-align: center;
-        font-size: 33px;
+        font-size: 44px;
         font-weight: semibold;
         flex: 1;
         padding: 22px;

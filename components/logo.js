@@ -37,7 +37,7 @@ export default props => (
     />
     <style jsx>{`
       svg {
-        width: 240px;
+        width: 260px;
       }
     `}</style>
   </svg>
