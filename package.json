@@ -14,7 +14,8 @@
     "proptypes": "^1.1.0",
     "react": "^16.4.1",
     "react-codemirror2": "^5.0.4",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "svg-to-jsx": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^5.0.1"
