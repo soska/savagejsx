@@ -1,53 +1,11 @@
 import React from 'react';
-import FileDropper from '../components/file-dropper';
 import { Base64 } from 'js-base64';
 import svgtojsx from 'svg-to-jsx';
 import copy from 'copy-to-clipboard';
 import Editor from '../components/editor';
-
-const template = jsx => `
-import React from 'react';
-
-export default ()=>(
-${jsx}
-);
-`;
-
-const SGVPreview = ({ svg }) => (
-  <div>
-    <img src={svg} />
-    <style jsx>{`
-      div {
-        background: #fff;
-        background-image: linear-gradient(45deg, #eee 25%, transparent 25%),
-          linear-gradient(-45deg, #eee 25%, transparent 25%),
-          linear-gradient(45deg, transparent 75%, #eee 75%),
-          linear-gradient(-45deg, transparent 75%, #eee 75%);
-        background-size: 20px 20px;
-
-        flex: 1;
-        padding: 22px;
-        text-align: center;
-        border-radius: 4px;
-      }
-      img {
-        max-height: 200px;
-      }
-    `}</style>
-  </div>
-);
-
-const DragLabel = ({ label, hover = false }) => (
-  <div>
-    {label}
-    <style jsx>{`
-      div {
-        padding: 11px;
-        color: ${hover ? 'white' : '#f0f0f0'};
-      }
-    `}</style>
-  </div>
-);
+import Logo from '../components/logo';
+import DropPreview from '../components/drop-preview';
+import template from '../utils/template';
 
 class Main extends React.Component {
   state = {
@@ -73,19 +31,14 @@ class Main extends React.Component {
     return (
       <div className="panes">
         <div className="branding">
-          <h2>Savage JSX</h2>
+          <h2>
+            <Logo />
+          </h2>
         </div>
         <div className="file-pane">
-          <FileDropper
-            fileTypes={['svg']}
+          <DropPreview
+            data={this.state.svgData}
             onReadFile={this.processFile}
-            render={(hover = false) => {
-              if (this.state.svgData) {
-                return <SGVPreview svg={this.state.svgData} />;
-              } else {
-                return <DragLabel label={'Drop SVG file here'} hover={hover} />;
-              }
-            }}
           />
         </div>
         {this.state.jsx && (
@@ -100,12 +53,16 @@ class Main extends React.Component {
         )}
         <style jsx>{`
           :global(body) {
-            background: #111;
+            background: #2c2a37;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
               Helvetica, sans-serif;
             font-size: 16px;
+          }
+
+          h2 {
+            text-align: center;
           }
           .panes {
             display: flex;

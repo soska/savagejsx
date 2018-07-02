@@ -93,7 +93,7 @@ class FileDropper extends Component {
           div {
             box-sizing: border-box;
             padding: 100px;
-            background: ${hover ? 'rebeccapurple' : '#E04964'};
+            background: ${hover ? '#FCEC4E' : '#E04964'};
             color: #999;
             width: 100%;
             position: relative;
